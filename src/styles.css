@@ -1,1 +1,41 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import "assets/css/normalize.css";
+
+/* ================================== Global =============================== */
+
+body {
+  font-size: 14px;
+  font-family: Roboto, Serif, sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: #153448;
+}
+
+a:hover {
+  color: #3C5B6F;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.nav-link {
+  color: #153448;
+}
+
+.nav-link:hover {
+  color: #3C5B6F;
+}
+
+.logo {
+  height: 36px;
+}
+
+.footer-logo {
+  height: 64px;
+}
+/* ================================== #Global =============================== */
