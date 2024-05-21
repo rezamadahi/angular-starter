@@ -3,6 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
+    path: 'home',
+    loadChildren: () => import('./home/home.module').then(m => m.HomeModule),
+  },
+  {
     path: 'authors',
     loadChildren: () => import('./author/author.module').then(m => m.AuthorModule),
   },
@@ -11,16 +15,12 @@ const routes: Routes = [
     loadChildren: () => import('./browse/browse.module').then(m => m.BrowseModule),
   },
   {
-    path: 'library',
-    loadChildren: () => import('./library/library.module').then(m => m.LibraryModule),
-  },
-  {
     path: 'qa',
     loadChildren: () => import('./qa/qa.module').then(m => m.QAModule),
   },
   {
     path: '',
-    redirectTo: '/authors',
+    redirectTo: '/home',
     pathMatch: 'full',
   }
 ];

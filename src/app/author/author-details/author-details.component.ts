@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-author-details',
-  standalone: true,
-  imports: [],
+  standalone: false,
   templateUrl: './author-details.component.html',
   styleUrl: './author-details.component.css'
 })

@@ -1,14 +1,14 @@
 import {Component, OnInit} from '@angular/core';
-import {Author} from "../../shared/models/author.model";
 import {SharedService} from "../../shared/shared.service";
+import {Author} from "../../shared/models/author.model";
 
 @Component({
-  selector: 'app-authors',
+  selector: 'app-home',
   standalone: false,
-  templateUrl: './authors.component.html',
-  styleUrl: './authors.component.css'
+  templateUrl: './home.component.html',
+  styleUrl: './home.component.css'
 })
-export class AuthorsComponent implements OnInit {
+export class HomeComponent implements OnInit {
 
   authorsList: Author[] = [];
   currentPage = 1;

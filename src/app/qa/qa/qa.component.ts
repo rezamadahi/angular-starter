@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-qa',
-  standalone: true,
-  imports: [],
+  standalone: false,
   templateUrl: './qa.component.html',
   styleUrl: './qa.component.css'
 })

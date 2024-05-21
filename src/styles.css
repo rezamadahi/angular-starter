@@ -23,12 +23,44 @@ img {
   height: auto;
 }
 
+.center-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.main-btn {
+  background-color: #153448;
+  color: white;
+  border-radius: 4px;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: rgba(21, 52, 72, 0.16) 0 1px 4px;
+}
+
+.main-btn:hover {
+  background-color: white;
+  border: 1px solid #153448;
+  color: #153448;
+}
+
+/* ================================== #Global =============================== */
+/******************************************************************************/
+/* =================================== Main ================================= */
+
 .nav-link {
   color: #153448;
 }
 
 .nav-link:hover {
   color: #3C5B6F;
+}
+
+.nav-pills .nav-link.active {
+  background-color: #153448;
+  color: white;
 }
 
 .logo {
@@ -38,4 +70,24 @@ img {
 .footer-logo {
   height: 64px;
 }
-/* ================================== #Global =============================== */
+
+.card-image {
+  height: 12rem;
+}
+
+.comments {
+  display: flex;
+  align-items: center;
+}
+
+.posts {
+  display: flex;
+  align-items: center;
+}
+
+/* =================================== #Main ================================ */
+/******************************************************************************/
+/* =================================== Media ================================ */
+
+
+/* =================================== #Media =============================== */
