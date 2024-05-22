@@ -11,16 +11,12 @@ const routes: Routes = [
     loadChildren: () => import('./author/author.module').then(m => m.AuthorModule),
   },
   {
-    path: 'browse',
-    loadChildren: () => import('./browse/browse.module').then(m => m.BrowseModule),
-  },
-  {
     path: 'qa',
     loadChildren: () => import('./qa/qa.module').then(m => m.QAModule),
   },
   {
     path: '',
-    redirectTo: '/home',
+    redirectTo: '/home', 
     pathMatch: 'full',
   }
 ];
