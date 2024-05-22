@@ -1,9 +1,11 @@
-export class Comment {
+// I changed the name of model because of name
+
+export class CommentModel {
   id: number;
   user: string;
   title: string;
   createdOn: Date;
-  constructor(props?: Partial<Comment>) {
+  constructor(props?: Partial<CommentModel>) {
     this.id = 0;
     this.user = '';
     this.title = '';

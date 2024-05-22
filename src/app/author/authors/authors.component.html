@@ -1,6 +1,38 @@
 <main class="content">
 
   <section class="row">
+
+    <div class="col-12 my-3 d-flex align-items-center justify-content-between">
+      <h2 class="mb-0">Authors</h2>
+      <button class="btn main-btn" type="button" (click)="addNewAuthor()">Add Author</button>
+    </div>
+
+    <div class="col-12">
+      <hr class="w-100">
+    </div>
+
+    <form class="w-100 my-3">
+      <div class="d-flex align-items-center justify-content-between">
+        <div class="col-12 col-lg-5">
+          <input type="text" class="form-control" (input)="searchAuthors()" placeholder="Search Authors">
+        </div>
+        <div class="col-12 col-lg-5 mt-3 mt-lg-0">
+          <select  (change)="sortAuthors()" class="form-control form-select">
+            <option value="name">Sort by Name</option>
+            <option value="totalPosts">Sort by Total Publications</option>
+            <option value="totalComments">Sort by Total Comments</option>
+          </select>
+        </div>
+        <div class="col-12 col-lg-1">
+          <button type="submit" class="btn main-btn">Search</button>
+        </div>
+      </div>
+    </form>
+
+    <div class="col-12">
+      <hr class="w-100">
+    </div>
+
     <div class="col-12 col-md-6 col-lg-4 mb-3" *ngFor="let author of authorsList">
       <div class="card">
         <img [src]="author.imageUrl" class="card-img-top card-image" alt="default">
@@ -22,8 +54,12 @@
   </section>
 
   <section class="row mt-3" *ngIf="totalAuthors > authorsList.length" >
-    <div class="col-12">
-      <button class="btn main-btn mx-auto" (click)="loadMore()">See More</button>
+    <div class="col-12 d-flex align-items-center justify-content-between">
+      <div class="d-flex align-items-center">
+        <h6 class="mb-0">Total authors: </h6>
+        <span class="mx-1 main-color">{{ totalAuthors }}</span>
+      </div>
+      <button class="btn main-btn" type="button" (click)="loadMore()">See More</button>
     </div>
   </section>
 

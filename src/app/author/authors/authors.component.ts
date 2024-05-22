@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Author} from "../../shared/models/author.model";
+import {Author, AuthorSortType} from "../../shared/models/author.model";
 import {SharedService} from "../../shared/shared.service";
 
 @Component({
@@ -13,6 +13,8 @@ export class AuthorsComponent implements OnInit {
   authorsList: Author[] = [];
   currentPage = 1;
   totalAuthors = 0;
+  searchText = '';
+  sortType: string = 'name';
   constructor(private sharedService: SharedService) {}
 
   ngOnInit() {
@@ -31,5 +33,11 @@ export class AuthorsComponent implements OnInit {
       this.authorsList = [...this.authorsList, ...nextPageAuthors];
     }
   }
+
+  addNewAuthor() {}
+
+  searchAuthors() {}
+
+  sortAuthors() {}
 
 }
