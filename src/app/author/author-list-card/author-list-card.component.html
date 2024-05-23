@@ -1,0 +1,16 @@
+<div class="card author-card" [routerLink]="['/authors/author', author.id]">
+  <img [src]="author.imageUrl ? author.imageUrl : 'assets/images/no-image.jpg'" class="card-img-top card-image" alt="default">
+  <div class="card-body">
+    <h4 class="card-title">{{ author.name }}</h4>
+  </div>
+  <div class="card-footer center-flex">
+    <div class="comments">
+      <img src="assets/icons/messages.svg" alt="comments" width="16" height="16">
+      <span class="mx-1">{{ author.totalComments }}</span>
+    </div>
+    <div class="posts">
+      <img src="assets/icons/article.svg" alt="article">
+      <span class="mx-1">{{ author.totalPosts }}</span>
+    </div>
+  </div>
+</div>

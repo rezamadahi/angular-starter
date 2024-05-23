@@ -33,7 +33,7 @@ img {
   background-color: #153448;
   color: white;
   border-radius: 4px;
-  padding: 8px 16px;
+  padding: 6px 16px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -46,12 +46,37 @@ img {
   color: #153448;
 }
 
+.secondary-btn {
+  background-color: white;
+  color: #153448;
+  border-radius: 4px;
+  padding: 6px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #153448;
+  box-shadow: rgba(21, 52, 72, 0.16) 0 1px 4px;
+}
+
+.secondary-btn:hover {
+  background-color: #153448;
+  border: 1px solid #3C5B6F;
+  color: white;
+}
+
 .main-color {
   color: #153448;
 }
 
 .bg-main {
   background-color: #153448;
+}
+
+.alert.alert-success {
+  position: fixed;
+  top: 2%;
+  width: 15%;
+  right: 1%;
 }
 
 /* ================================== #Global =============================== */
@@ -91,6 +116,27 @@ img {
 .posts {
   display: flex;
   align-items: center;
+}
+
+.author-card {
+  transition: 0.1s all linear;
+  cursor: pointer;
+}
+
+.author-card:hover {
+  transform: translateY(5px);
+}
+
+.cover-image {
+  width: 100%;
+  height: 400px;
+  cursor: pointer;
+}
+
+.publication-comments{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 
 /* =================================== #Main ================================ */

@@ -4,20 +4,20 @@
 
     <div class="col-12 my-3 d-flex align-items-center justify-content-between">
       <h2 class="mb-0">Authors</h2>
-      <button class="btn main-btn" type="button" (click)="addNewAuthor()">Add Author</button>
+      <button class="btn secondary-btn" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Author</button>
     </div>
 
     <div class="col-12">
       <hr class="w-100">
     </div>
 
-    <form class="w-100 my-3">
+    <form class="w-100 my-3" [formGroup]="authorForm" (ngSubmit)="onSearch()" >
       <div class="d-flex align-items-center justify-content-between">
         <div class="col-12 col-lg-5">
-          <input type="text" class="form-control" (input)="searchAuthors()" placeholder="Search Authors">
+          <input type="text" class="form-control" formControlName="searchText" placeholder="Search Authors">
         </div>
         <div class="col-12 col-lg-5 mt-3 mt-lg-0">
-          <select  (change)="sortAuthors()" class="form-control form-select">
+          <select class="form-control form-select" formControlName="sortType" >
             <option value="name">Sort by Name</option>
             <option value="totalPosts">Sort by Total Publications</option>
             <option value="totalComments">Sort by Total Comments</option>
@@ -34,33 +34,50 @@
     </div>
 
     <div class="col-12 col-md-6 col-lg-4 mb-3" *ngFor="let author of authorsList">
-      <div class="card">
-        <img [src]="author.imageUrl" class="card-img-top card-image" alt="default">
-        <div class="card-body">
-          <h4 class="card-title">{{ author.name }}</h4>
-        </div>
-        <div class="card-footer center-flex">
-          <div class="comments">
-            <img src="assets/icons/messages.svg" alt="comments" width="16" height="16">
-            <span class="mx-1">{{ author.totalComments }}</span>
-          </div>
-          <div class="posts">
-            <img src="assets/icons/article.svg" alt="article">
-            <span class="mx-1">{{ author.totalPosts }}</span>
-          </div>
-        </div>
-      </div>
+      <app-author-list-card [author]="author"></app-author-list-card>
     </div>
+
   </section>
 
   <section class="row mt-3" *ngIf="totalAuthors > authorsList.length" >
     <div class="col-12 d-flex align-items-center justify-content-between">
       <div class="d-flex align-items-center">
         <h6 class="mb-0">Total authors: </h6>
-        <span class="mx-1 main-color">{{ totalAuthors }}</span>
+        <span class="mx-1 main-color">{{ getTotalAuthors() }}</span>
       </div>
-      <button class="btn main-btn" type="button" (click)="loadMore()">See More</button>
+      <button *ngIf="!isFilter" class="btn main-btn" type="button" (click)="loadMore()">See More</button>
     </div>
   </section>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Add new author</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form class="w-100 d-flex flex-column" [formGroup]="newAuthorForm">
+            <div class="d-flex flex-column">
+              <input class="form-control" formControlName="name" placeholder="Name" >
+              <span *ngIf="newAuthorForm.controls['name'].touched && newAuthorForm.controls['name'].invalid" class="text-danger mt-2">Name must insert.</span>
+            </div>
+            <div class="my-4">
+              <app-image-uploader (imageSelected)="setImage($event)"></app-image-uploader>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" #closeButton>Close</button>
+          <button type="button" class="btn main-btn" [disabled]="newAuthorForm.invalid" (click)="addNewAuthor()">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="authorAdded" class="alert alert-success" role="alert">
+    Author added successfully!
+  </div>
 
 </main>

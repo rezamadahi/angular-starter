@@ -1,1 +1,104 @@
-<p>author-details works!</p>
+<main class="content">
+  <section class="row">
+    <div class="col-12">
+      <div class="d-none">
+        <input type="file" id="fileInput" (change)="onFileChange($event)">
+      </div>
+      <img class="cover-image"
+           [src]="author.imageUrl ? author.imageUrl : 'assets/images/no-image.jpg'"
+           [alt]="author.name ? author.name : 'Author image'"
+           (click)="openImageUploader()">
+    </div>
+  </section>
+
+  <section class="row" style="padding: 0 12px">
+    <div class=" d-flex align-items-center bg-main text-white py-5">
+      <div class="col-6">
+        <h2 (click)="editName()" class="author-name">{{ author.name }}</h2>
+      </div>
+      <div class="col-6">
+        <div class="publication-comments">
+          <div class="d-flex align-items-center">
+            <img src="assets/icons/white-book.svg" alt="book" title="articles">
+            <span class="mx-1">{{ author.totalPosts }}</span>
+          </div>
+          <div class="d-flex align-items-center mx-3">
+            <img src="assets/icons/white-messages.svg" alt="comment" title="comments">
+            <span class="mx-1">{{ author.totalComments }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="row my-3">
+
+    <div class="col-12">
+      <h4>Author articles</h4>
+    </div>
+
+    <div class="col-12 my-3" *ngIf="author.articles.length" >
+      <table class="table">
+        <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Title</th>
+          <th scope="col">Type</th>
+          <th scope="col">Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let article of author.articles; let i = index">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>{{ article.title }}</td>
+          <td>{{ article.type }}</td>
+          <td>{{ article.createdOn | date }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col-12 my-3" *ngIf="!author.articles.length">
+      Have no article.
+    </div>
+
+  </section>
+
+  <section class="row my-3">
+
+    <div class="col-12">
+      <h4>Author Comments</h4>
+    </div>
+
+    <div class="col-12 my-3" *ngIf="author.comments.length" >
+      <table class="table">
+        <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Title</th>
+          <th scope="col">User</th>
+          <th scope="col">Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let comment of author.comments; let i = index">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>{{ comment.title }}</td>
+          <td>{{ comment.user }}</td>
+          <td>{{ comment.createdOn | date }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col-12 my-3" *ngIf="!author.comments.length">
+      Have no comment.
+    </div>
+
+  </section>
+
+  <div *ngIf="nameEdited" class="alert alert-success" role="alert">
+    Name edited successfully!
+  </div>
+
+</main>
